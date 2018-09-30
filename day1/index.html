@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>白云飘飘</title>
+		<style>
+			body{background: #ccc;}
+			.box{width: 200px;height: 150px;position: absolute;left: 1000px;top: 100px;animation: box  60s linear infinite;}
+			.yun{width: 180px;height: 80px;border-radius: 80px;background: white;position: relative;top: 50px;}
+			.yun::after{content: "";width: 80px;height: 80px;background: white;position: absolute;left: 10px;top: -15px;border-radius: 100%;}
+			.yun::before{content: "";width: 90px;height: 120px;background: white;position: absolute;left: 75px;top: -30px;border-radius: 50%;-webkit-transform: rotate(10deg);}
+			.sun{height: 40px;width: 40px;background: -webkit-radial-gradient(center,circle farthest-side,orangered 5%,orange 30%,yellow 65%);border-radius: 100%;
+			position: absolute;left: 30px;top: 0px;animation: 60s sun linear infinite;}
+			.sun li{width: 1px;height: 8px;background: red;list-style: none;position: absolute;left: 0px;top: 0px;}
+			.sun li:nth-child(1){left: -10px;top: 18px; -webkit-transform: rotate(90deg);}
+			.sun li:nth-child(2){left: 50px;top: 18px;-webkit-transform: rotate(90deg);}
+			.sun li:nth-child(3){top: -15px;left: 20px;}
+			.sun li:nth-child(4){top: 45px;left: 20px;}
+			.sun li:nth-child(5){top: 40px;left: 0px;-webkit-transform: rotate(45deg);}
+			.sun li:nth-child(6){top: -3px;left: 45px;-webkit-transform: rotate(45deg);}
+			.sun li:nth-child(7){top: 40px;left: 40px;-webkit-transform: rotate(135deg);}
+			.sun li:nth-child(8){top: -3px;left: -5px;-webkit-transform: rotate(135deg);}
+			.yudi{display: none; width: 180px;height: 40px;position: absolute;top: 80px;animation: yudi 10s linear infinite;overflow: hidden;}
+			.yudi li{width: 1px; height: 20px;background: aqua;list-style: none;position: absolute;top: 10px;left:30px;-webkit-transform: rotate(30deg);}
+			.yudi li:nth-child(2){left: 50px;}
+			.yudi li:nth-child(3){left: 70px;}
+			.yudi li:nth-child(4){left: 90px;}
+			.yudi li:nth-child(5){left: 110px;}
+			.yudi li:nth-child(6){left: 130px;}
+			.yudi li:nth-child(7){left: 150px;}
+			@keyframes box{
+				0%{left: 1000px;top: 100px;}
+				20%{left: 600px;top: 150px;}
+				40%{left: 400px;top: 50px;}
+				60%{left: 300px;top: 150px;}
+				80%{left: 200px;top: 50px;}
+				100%{left: 100px;top: 100px;}
+			}
+			@keyframes sun{
+				from{left: 30px;top: 0px;}
+				to{left: 20px;top: -50px;}
+			}
+			@keyframes yudi{
+				from{height: 0px;}
+				to{height: 40px;}
+			}
+		</style>
+		<script>
+//			document.addEventListener("DOMContentLoaded",function(){//DOM树加载完毕执行
+//				var btn = document.querySelector(".btn");
+//				var sun = document.querySelector(".sun");
+//				var yudi = document.querySelector(".yudi");
+//				var a=0;
+//				btn.onclick = function(){
+//					a++;
+//					if(a%2==0){
+//						sun.style.display="block";
+//					    yudi.style.display = "none";
+//					    console.log("太阳出现");
+//					    console.log(a);
+//					}else{
+//						sun.style.display="none";
+//					    yudi.style.display = "block";
+//					    console.log("太阳消失");
+//					    console.log(a%2);
+//					}
+//					
+//				}
+//			})
+		</script>
+		<script src="js/jquery-1.12.0.js"></script>
+		<script>
+			$(function(){
+				$(".btn").on("click",function(){
+					$(".sun").toggle();
+					$(".yudi").toggle();
+					if($(".yudi").css("display")=="block"){
+						$(".yun").css("-webkit-box-shadow","3px 5px 5px 1px #999");
+						
+					}else{
+						$(".yun").css("-webkit-box-shadow","none");
+					}
+					
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<div class="yun">
+				<div class="sun">
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						
+					</ul>
+				</div>
+				<div class="yudi">
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>	
+		</div>
+		<button class="btn">变天了</button>
+	</body>
+</html>
